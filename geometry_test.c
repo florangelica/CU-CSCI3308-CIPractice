@@ -188,7 +188,19 @@ Suite* coord_2d_suite(void)
     /* Return Suite */
     return s;
 
-}
 
+}
+int main(void){
+
+    int failed = 0;
+    Suite* s = coord_2d_suite();
+    SRunner* sr = srunner_create(s);
+    srunner_run_all(sr, CK_VERBOSE);
+    failed = srunner_ntests_failed(sr);
+    srunner_free(sr);
+
+    return (failed ? EXIT_FAILURE : EXIT_SUCCESS);
+
+}
 
 
